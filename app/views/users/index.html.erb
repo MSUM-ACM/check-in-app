@@ -1,0 +1,35 @@
+<div class="user-list">
+  <% if User.all.count > 0 %>
+  <table>
+    <thead>
+      <tr>
+        <th>Actions</th>
+        <th>Name</th>
+        <th>Email</th>
+      <tr>
+    </thead>
+    <tbody>
+      <%= User.find_each do |user| %>
+        <tr>
+          <td><%= link_to "", user, class: "fa fa-minus action delete",  method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete User"%></td>
+          <td><%= user.name %></td>
+          <td><%= mail_to "#{user.email}", user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><%= link_to "", remove_all_users_path, :method => :get, class: "fa fa-minus-circle action delete", data: { confirm: 'Are you sure?' }, title: "Delete All Users"  %></td>
+        <td>Total Users: <%= User.all.count %></td>
+        <td><%= link_to "Download CSV", users_path(format: :csv) %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <% else %>
+  <h1 class="center">No users added</h1>
+  <% end %>
+</div>
+
+<% content_for :header do %>
+  <li><%= link_to "", new_user_path, class: "fa fa-plus", title: "Add new User"%></li>
+<% end %>

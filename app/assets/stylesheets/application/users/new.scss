@@ -1,0 +1,81 @@
+.users.new main{
+  display: flex;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+
+  .label {
+    display: none;
+  }
+
+  legend span {
+    font-size: 3em;
+    padding: 40px 0px;
+    display: block;
+    width: 100%;
+    color: $grey;
+  }
+
+  .inline-errors {
+    margin: 0;
+  }
+
+  input {
+    font-family: 'Candal', sans-serif;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    font-size: 3em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border:1px solid color($grey, 200);
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button[type="submit"] {
+    background-color: $green;
+    color: white;
+    @include transition;
+
+    &:hover {
+      background-color: shade($green, 10%);
+      @include transition;
+    }
+  }
+
+  button[type="reset"] {
+    background-color: $grey;
+    color: white;
+    @include transition;
+    &:hover {
+      background-color: shade($grey, 10%);
+      @include transition;
+    }
+  }
+
+  .actions {
+    @include outer-container(100%);
+    padding: 0;
+
+    li {
+      @include span-columns(6);
+      padding-right: 0;
+      button {
+        display: block;
+        width: 100%;
+        padding: 30px;
+        border-radius: 10px;
+        border: 1px solid transparent;
+
+        i {
+          font-size: 6em;
+        }
+      }
+    }
+  }
+}

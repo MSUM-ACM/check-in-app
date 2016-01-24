@@ -1,0 +1,83 @@
+header {
+  background: $blue;
+  color: $accent-color;
+  position: relative;
+
+  div {
+    @include outer-container(100%);
+  }
+
+  .title {
+    @include span-columns(10);
+  }
+  .actions {
+    @include span-columns(2);
+  }
+
+  .title {
+    left: 0;
+    font-size: 2em;
+
+    .icon {
+      background-image: image-url("app-icon.png");
+      display: inline-block;
+      height: 45px;
+      width: 45px;
+      background-size: 45px;
+      margin: 8px;
+      background-repeat: no-repeat;
+      float: left;
+    }
+
+    h2 {
+      margin: 0;
+      margin-left: 30px;
+    }
+  }
+
+  .actions {
+    right: 0;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+      float: right;
+      position: relative;
+
+      .user-count {
+        position: absolute;
+        background: red;
+        display: block;
+        padding: 5px 10px;
+        border-radius: 100%;
+        text-align: center;
+        top: 2px;
+        left: -20px
+      }
+
+      a {
+        padding: 10px 15px;
+        text-decoration: none;
+        background: $accent-color;
+        color: $main-color;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 2em;
+        @include transition;
+        &:active {
+          color: $main-color;
+        }
+        &:hover {
+          background: shade($accent-color, 10%);
+          @include transition;
+        }
+      }
+    }
+
+  }
+}

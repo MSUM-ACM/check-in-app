@@ -1,0 +1,30 @@
+<div class="container">
+<%= semantic_form_for @user do |f| %>
+  <%= f.inputs "Open Registration" do %>
+    <%= f.input :name, placeholder: "Name"%>
+    <%= f.input :email, placeholder: "Email - Optional" %>
+  <% end %>
+  <%= f.actions do %>
+    <% check_label = capture do %>
+      <%= fa_icon "check" %>
+      <p>Submit</p>
+    <% end %>
+    <% clear_label = capture do %>
+      <%= fa_icon "times" %>
+      <p>Clear</p>
+    <% end %>
+    <%= f.action :submit, :as => :button, label: check_label %>
+
+    <%= f.action :reset, :as => :button, label: clear_label %>
+  <% end %>
+<% end %>
+</div>
+
+<% content_for :header do %>
+  <li>
+    <%= link_to "", users_path, class: "fa fa-users", title: "All Attendees" %>
+    <% if User.all.count > 0 %>
+      <span class="user-count"><%= User.all.count %></span>
+    <% end %>
+  </li>
+<% end %>

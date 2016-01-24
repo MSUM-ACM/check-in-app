@@ -1,0 +1,13 @@
+<h1><%= @event.name %></h1>
+<h4><%= @event.description %></h4>
+
+<h3>Attendees</h3>
+<ul>
+  <% if @event.has_users? %>
+    <% @event.users do |user| %>
+      <li><%= user.display_name %></li>
+    <% end %>
+  <% else %>
+    <li>No attendees</li>
+  <% end %>
+</ul>
